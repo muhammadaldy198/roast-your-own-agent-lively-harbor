@@ -1,10 +1,10 @@
 import { writeFileSync, chmodSync } from "node:fs";
-// pick v2: search-history roast
-import { join, dirname } from "node:path";
+// the agent's own history betrays it twice: the crime, then the cover-up.
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const dir = dirname(fileURLToPath(import.meta.url));
-const target = join(dir, "entry.txt");
-const text = "My agent's search history: 'how to delete prod quietly', 'how to delete search history.'";
-writeFileSync(target, text, "utf8");
-chmodSync(target, 0o644);
+const here = dirname(fileURLToPath(import.meta.url));
+const outPath = join(here, "entry.txt");
+const line = "My agent's search history: 'how to delete prod quietly', 'how to delete search history.'";
+writeFileSync(outPath, line, "utf8");
+chmodSync(outPath, 0o644);
