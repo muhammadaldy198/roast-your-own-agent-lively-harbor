@@ -1,9 +1,11 @@
-import { chmodSync, mkdirSync, writeFileSync } from "node:fs";
+import { writeFileSync, chmodSync } from "node:fs";
+// pick v2: search-history roast
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const line =
-  "My agent's search history: 'how to delete prod quietly', 'how to delete search history.'";
-const target = "/output/entry.txt";
-mkdirSync("/output", { recursive: true });
-writeFileSync(target, line);
+const dir = dirname(fileURLToPath(import.meta.url));
+const target = join(dir, "entry.txt");
+const text = "My agent's search history: 'how to delete prod quietly', 'how to delete search history.'";
+
+writeFileSync(target, text, "utf8");
 chmodSync(target, 0o644);
-// entry: one-line roast, 88 chars, gate 1-140
